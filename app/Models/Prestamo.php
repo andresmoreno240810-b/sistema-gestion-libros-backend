@@ -1,4 +1,3 @@
-
 <?php
 
 namespace App\Models;
@@ -32,20 +31,16 @@ class Prestamo extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    // Relación anterior: se conserva temporalmente
-    // para no romper el código existente.
     public function libro(): BelongsTo
     {
         return $this->belongsTo(Libro::class, 'libro_id');
     }
 
-    // Todos los detalles asociados al préstamo.
     public function detalles(): HasMany
     {
         return $this->hasMany(DetallePrestamo::class, 'prestamo_id');
     }
 
-    // Todos los libros incluidos en el préstamo.
     public function libros(): BelongsToMany
     {
         return $this->belongsToMany(
